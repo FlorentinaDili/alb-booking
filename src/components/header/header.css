@@ -82,6 +82,10 @@
     gap: 10px;
   }
   
+  /* ::placeholder{
+    color:red;
+  } */
+
   .headerSearchInput {
     border: none;
     outline: none;
@@ -127,10 +131,11 @@
   .optionCounterButton {
     width: 30px;
     height: 30px;
-    border: 1px solid #0071c2;
-    color: #0071c2;
+    border: 1px solid #3D8361;
+    color: #3D8361;
     cursor: pointer;
     background-color: white;
+    border-radius:8px;
   }
   
   .optionCounterButton:disabled {
