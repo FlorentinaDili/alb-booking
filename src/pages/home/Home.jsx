@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import Features from "../../components/features/Features";
 import PropertyList from "../../components/featurePropertyList/PropertyList";
 import HomesList from "../../components/featureHomesList/HomesList";
+import MailList from "../../components/mailList/MailList";
 import "./home.css"
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
           <PropertyList />
           <h1 className="homeTitle">Homes guests love</h1>
           <HomesList />
+          <MailList />
         </div>
     </div>
   )
