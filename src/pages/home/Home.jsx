@@ -1,6 +1,7 @@
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Features from "../../components/features/Features";
+import PropertyList from "../../components/featurePropertyList/PropertyList";
 import "./home.css"
 
 const Home = () => {
@@ -10,6 +11,10 @@ const Home = () => {
         <Header />
         <div className="homeContainer">
           <Features />
+          <h1 className="homeTitle">Browse by property type</h1>
+          <PropertyList />
+          <h1 className="homeTitle">Home guests love</h1>
+
         </div>
     </div>
   )
