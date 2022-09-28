@@ -4,7 +4,8 @@ import { faHotel, faHouse,
         faPlaceOfWorship, 
         faSearch, faShip, faTrain,
         faPlane, faCar, faTaxi, faCalendarDays,
-        faPerson} from "@fortawesome/free-solid-svg-icons"
+        faPerson,
+        faArrowsUpDown} from "@fortawesome/free-solid-svg-icons"
 import { DateRange } from 'react-date-range';
 import { useState } from 'react'
 //setDate} from 'react'
@@ -12,7 +13,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns"
 
-const Header = () => {
+const Header = ({type}) => {
 //the component is set false once the page is open (it's not shown until clicking)..
 const [openDate, setOpenDate] = useState(false);
 //
@@ -42,7 +43,7 @@ const handleOption = (name, operation) =>{
 
 return (
     <div className="header">
-        <div className="headerContainer">
+        <div className={type === "list" ? "headerContainer listMode" : "headerContainer "}>
             <div className="headerList">
                 <div className="headerListItem active">
                 <FontAwesomeIcon icon={faHotel} className="headerListItemIcon"/>
@@ -77,6 +78,9 @@ return (
                 <span>Attractions</span>
                 </div>
             </div>
+        
+        { type!=="list" &&
+            <>
             <h1 className="headerTitle">
                 Looking for the best booking platform? You're on the right place.
             </h1>
@@ -107,6 +111,7 @@ return (
                     className="date"
                     />
                     }
+                    <FontAwesomeIcon icon={faArrowsUpDown} className="headerIcon" />
                 </div>
                 <div className="headerSearchItem">
                     <FontAwesomeIcon icon={faPerson} className="headerIcon"/>
@@ -156,6 +161,8 @@ return (
                     <FontAwesomeIcon icon={faSearch} className="headerSearchIcon"/>
                 </div>
             </div>
+              </>
+            }
         </div>
     </div>
   )
