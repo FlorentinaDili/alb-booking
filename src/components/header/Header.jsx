@@ -1,12 +1,13 @@
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircle, faHotel, faHouse, 
-        faPlaceOfWorship, faQuestion, faQuestionCircle,
+import { faHotel, faHouse, 
+        faPlaceOfWorship, 
         faSearch, faShip, faTrain,
         faPlane, faCar, faTaxi, faCalendarDays,
         faPerson} from "@fortawesome/free-solid-svg-icons"
 import { DateRange } from 'react-date-range';
-import { useState, setDate} from 'react'
+import { useState } from 'react'
+//setDate} from 'react'
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns"
@@ -35,7 +36,7 @@ const[options, setOptions] = useState({
 const handleOption = (name, operation) =>{
     setOptions((prev)=>{ return{
         //conditional operations
-        ...prev, [name] : operation ==="i" ? options[name]+1 : options[name]+1,
+        ...prev, [name] : operation ==="i" ? options[name] + 1 : options[name] - 1,
     }})
 }
 
@@ -93,9 +94,9 @@ return (
                 </div>
                 <div className="headerSearchItem">
                     <FontAwesomeIcon icon={faCalendarDays} className="headerIcon"/>
-                    <span onClick={()=>setOpenDate(!openDate)} className="headerSearchText">{`${format(date[0].startDate, "dd/MM/yyyy")}
-                                                        to ${format(date[0].endDate, "dd/MM/yyyy")}`
-                                                        }
+                    <span onClick={()=>setOpenDate(!openDate)} className="headerSearchText">
+                        {`${format(date[0].startDate, "dd/MM/yyyy")}
+                        to ${format(date[0].endDate, "dd/MM/yyyy")}`}
                     </span>
 
                     {openDate && <DateRange
@@ -109,30 +110,46 @@ return (
                 </div>
                 <div className="headerSearchItem">
                     <FontAwesomeIcon icon={faPerson} className="headerIcon"/>
-                    <span className="headerSearchText">{`${options.adult} adult - 
-                                                        ${options.kids} kids -
-                                                        ${options.room} room 
-                                                        `}</span>
-                    <div className="options">
+                    <span onClick={()=>setOpenOptions(!openOptions)}
+                        className="headerSearchText">{`${options.adult} adult | 
+                                                    ${options.kids} kids |
+                                                    ${options.room} room 
+                                                    `}</span>
+                    {openOptions && <div className="options">
                         <div className="optionItem">
                             <span className="optionText">Adult</span>
-                            <button className="optionCounterButton" onClick={()=>handleOption("adult", "d")}>-</button>
-                            <span className="optionCounterNumber">1</span>
-                            <button className="optionCounterButton" onClick={()=>handleOption("adult", "i")}>+</button>
+                            <button className="optionCounterButton"
+                             onClick={()=>handleOption("adult", "d")}
+                             disabled={options.adult <=1}
+                             >-</button>
+                            <span className="optionCounterNumber">{options.adult}</span>
+                            <button className="optionCounterButton" 
+                            onClick={()=>handleOption("adult", "i")}
+                            >+</button>
                         </div>
                         <div className="optionItem">
                             <span className="optionText">Kids</span>
-                            <button className="optionCounterButton" onClick={()=>handleOption("kids", "d")}>-</button>
-                            <span className="optionCounterNumber">0</span>
-                            <button className="optionCounterButton" onClick={()=>handleOption("kids", "i")}>+</button>
+                            <button className="optionCounterButton" 
+                            onClick={()=>handleOption("kids", "d")}
+                            disabled={options.kids<=0}
+                            >-</button>
+                            <span className="optionCounterNumber">{options.kids}</span>
+                            <button className="optionCounterButton" 
+                            onClick={()=>handleOption("kids", "i")}
+                            >+</button>
                         </div>
                         <div className="optionItem">
                             <span className="optionText">Room</span>
-                            <button className="optionCounterButton" onClick={()=>handleOption("room", "d")}>-</button>
-                            <span className="optionCounterNumber">1</span>
-                            <button className="optionCounterButton" onClick={()=>handleOption("room", "i")}>+</button>
+                            <button className="optionCounterButton"
+                             onClick={()=>handleOption("room", "d")}
+                             disabled={options.room<=1}
+                             >-</button>
+                            <span className="optionCounterNumber">{options.room}</span>
+                            <button className="optionCounterButton" 
+                            onClick={()=>handleOption("room", "i")}
+                            >+</button>
                         </div>
-                    </div>
+                    </div>}
                 </div>
                 <div className="headerSearchItem">
                     <button className="headerBtn">Search</button>
