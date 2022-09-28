@@ -1,10 +1,11 @@
+import "./home.css"
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Features from "../../components/features/Features";
 import PropertyList from "../../components/featurePropertyList/PropertyList";
 import HomesList from "../../components/featureHomesList/HomesList";
 import MailList from "../../components/mailList/MailList";
-import "./home.css"
+import Footer from "../../components/footer/Footer";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
           <h1 className="homeTitle">Homes guests love</h1>
           <HomesList />
           <MailList />
+          <Footer />
         </div>
     </div>
   )
