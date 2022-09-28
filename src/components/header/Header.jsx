@@ -121,6 +121,7 @@ return (
                     moveRangeOnFirstSelection={false}
                     ranges={date}
                     className="date"
+                    minDate={new Date()}
                     />
                     }
                     <FontAwesomeIcon icon={faArrowsUpDown} className="headerIcon" />

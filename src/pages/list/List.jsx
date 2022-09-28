@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from "react-router-dom";
 import {useState} from 'react'
+import { format } from "date-fns"
+import { DateRange } from 'react-date-range'
 
 export const List = () => {
 
@@ -27,15 +29,21 @@ export const List = () => {
               </h1>
               <div className="lsItem">
                 <label>Destination</label>
-                <input type="text" />
+                <input type="text" placeholder={destination} />
               </div>
               <div className="lsItem">
                 <label>Check-In Date</label>
-
+                <span>
+                {`${format(date[0].startDate, "dd/MM/yyyy")}
+                to ${format(date[0].endDate, "dd/MM/yyyy")}`}
+                </span>
               </div>
               <div className="lsItem">
-                <label>Destination</label>
-                <input type="text" />
+                <DateRange
+                onChange={item=>setDate([item.selection])} 
+                minDate={new Date()}
+                ranges={date}
+                />
               </div>
             </div>
             <div className="listResult"></div>
