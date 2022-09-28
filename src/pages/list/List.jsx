@@ -5,11 +5,15 @@ import list from './list.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from "react-router-dom";
+import {useState} from 'react'
 
 export const List = () => {
 
   const location=useLocation();
-  
+  const [destination, setDestination]=useState(location.state.destination)
+  const [date, setDate]=useState(location.state.date)
+  const [options, setOptions]=useState(location.state.options)
+
   return (
     <div>
     <Navbar />
