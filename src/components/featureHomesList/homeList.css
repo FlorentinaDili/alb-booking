@@ -1,0 +1,47 @@
+.homeList{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+.hlItem{
+    flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .homeListImg{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .hlName{
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .hlCity{
+    font-weight: 300;
+  }
+  
+  .hlPrice{
+    font-weight: 500;
+  }
+  
+  .hlRating>button{
+    background-color: #3D8361;
+    color: white;
+    border: none;
+    padding: 3px;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .hlRating>span{
+    font-size: 14px;
+  }
