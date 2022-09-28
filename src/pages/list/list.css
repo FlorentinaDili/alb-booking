@@ -1,0 +1,32 @@
+.listContainer{
+    display:flex;
+    margin-top:20px;
+    justify-content:center;
+}
+
+.listWrapper{
+    width:100%;
+    max-width:1024px;
+    display:flex;
+    gap:20px;
+}
+
+.listSearch{
+    flex:1;
+    background-image:url("https://images.unsplash.com/photo-1604537529586-87ac173f4310?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding:10px;
+    border-radius:10px;
+    position:sticky;
+    top:10px;
+}
+
+.searchIcon{
+    color:#555;
+}
+
+.listResult{
+    flex:3;
+}
+

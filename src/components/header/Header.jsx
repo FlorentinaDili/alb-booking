@@ -12,8 +12,11 @@ import { useState } from 'react'
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns"
+import { useNavigate } from "react-router-dom";
 
 const Header = ({type}) => {
+
+const[destination, setDestination] = useState(" ");
 //the component is set false once the page is open (it's not shown until clicking)..
 const [openDate, setOpenDate] = useState(false);
 //
@@ -33,12 +36,17 @@ const[options, setOptions] = useState({
     room:1
 })
 
-
 const handleOption = (name, operation) =>{
     setOptions((prev)=>{ return{
         //conditional operations
         ...prev, [name] : operation ==="i" ? options[name] + 1 : options[name] - 1,
     }})
+}
+
+const navigate = useNavigate()
+
+const handleSearch = () =>{
+  navigate("/hotels", {state:{ destination, date, options}})
 }
 
 return (
@@ -94,7 +102,11 @@ return (
                     <FontAwesomeIcon icon={faHotel} className="headerIcon"/>
                     <input type="text"
                     placeholder="Your destination"
-                    className="headerSearchInput" />
+                    className="headerSearchInput"
+                    
+                    onChange={e=>setDestination(e.target.value)}
+
+                    />
                 </div>
                 <div className="headerSearchItem">
                     <FontAwesomeIcon icon={faCalendarDays} className="headerIcon"/>
@@ -157,7 +169,7 @@ return (
                     </div>}
                 </div>
                 <div className="headerSearchItem">
-                    <button className="headerBtn">Search</button>
+                    <button className="headerBtn" onClick={handleSearch}>Search</button>
                     <FontAwesomeIcon icon={faSearch} className="headerSearchIcon"/>
                 </div>
             </div>
