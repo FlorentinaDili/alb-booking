@@ -12,9 +12,10 @@ import { DateRange } from 'react-date-range'
 export const List = () => {
 
   const location=useLocation();
-  const [destination, setDestination]=useState(location.state.destination)
-  const [date, setDate]=useState(location.state.date)
-  const [options, setOptions]=useState(location.state.options)
+  const [destination, setDestination]=useState(location.state.destination);
+  const [date, setDate]=useState(location.state.date);
+  const [openDate, setOpenDate]=useState(false);
+  const [options, setOptions]=useState(location.state.options);
 
   return (
     <div>
@@ -33,17 +34,17 @@ export const List = () => {
               </div>
               <div className="lsItem">
                 <label>Check-In Date</label>
-                <span>
+                <span onClick={()=>setOpenDate(!openDate)}>
                 {`${format(date[0].startDate, "dd/MM/yyyy")}
                 to ${format(date[0].endDate, "dd/MM/yyyy")}`}
                 </span>
               </div>
               <div className="lsItem">
-                <DateRange
+                {openDate && <DateRange
                 onChange={item=>setDate([item.selection])} 
                 minDate={new Date()}
                 ranges={date}
-                />
+                />}
               </div>
             </div>
             <div className="listResult"></div>
