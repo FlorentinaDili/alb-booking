@@ -6,4 +6,4 @@ Working with ReactJs for the UI/FrontEnd part
 
 # starting
 
-npm run serve
+npm start
